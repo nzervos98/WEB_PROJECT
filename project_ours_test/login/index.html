@@ -1,0 +1,60 @@
+<html>
+<head>
+	<title>Login & Registration</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+
+</head>
+<body>
+
+<div class="container">
+
+	<div class="login-box">
+	<div class="row">
+	
+	<!-- LOGIN FORM -->
+	<div class="col-md-6 login-left">
+		<h2> Login </h2>
+		<form action="../backend/login.php" method="POST">
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" name="user" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" name="password" class="form-control" required>
+			</div>
+			<button type="submit" class="btn btn-primary"> Login </button>
+			
+		</form>
+	</div>
+	
+	
+	<!-- REGISTER FORM -->
+	<div class="col-md-6 login-right">
+		<h2> Register </h2>
+		<form action="../backend/register.php" method="POST">
+			<div class="form-group">
+				<label>Username</label>
+				<input type="text" name="user" class="form-control" required>
+			</div>
+			<div class="form-group">
+				<label>Password</label>
+				<input type="password" name="password" pattern="(?=.*\d)(?=.*[\W_]).{8,}" title="Minimum of 8 characters. Should have at least one special character and one number." class="form-control" required>
+				
+			</div>
+			<div class="form-group">
+				<label>E-mail</label>
+				<input type="email" name="email" class="form-control" required>
+			</div>
+			<button type="submit" class="btn btn-primary"> Register </button>
+		</form>
+	</div>
+	</div>
+	</div>
+</div>
+
+</body>
+</html>
