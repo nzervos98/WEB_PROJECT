@@ -194,19 +194,27 @@ function fetchAndPieChart() {
 		body: JSON.stringify({ type: "pie" })
 	})
 		.then(res => res.json())
-		.then(res => {
-            //adding activity buttons as a dropdown list------------------------------
-			drawPieChart(colors, Object.values(res), Object.keys(res), "pie-chart");
+		.then(res => {		
+			act_types = Object.keys(res);
+			var i;
+			for(i = 0 ; i < act_types.length; i++){
+				if(act_types[i] == ""){
+					act_types[i] = "NULL"
+				}
+			}
+		
+            		//adding activity buttons as a dropdown list------------------------------
+			drawPieChart(colors, Object.values(res), act_types, "pie-chart");
 			let dropdown = document.getElementById("act-list");
 			for (year of Object.keys(res)) {
 				let btn = document.createElement("button");
 				let textNode = document.createTextNode(year);
-                btn.appendChild(textNode);
-                //on click to an activity the charts are updated for the corresponding activity 
+                		btn.appendChild(textNode);
+                		//on click to an activity the charts are updated for the corresponding activity 
 				btn.addEventListener("click", drawCharts);
 				btn.classList.add("dropdown-item");
-                dropdown.appendChild(btn);    
-            }
+               	 		dropdown.appendChild(btn);    
+            		}
             //-------------------------------------------------------------------------
 		});
 }
