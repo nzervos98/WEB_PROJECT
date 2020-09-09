@@ -195,8 +195,15 @@ function fetchAndPieChart() {
 	})
 		.then(res => res.json())
 		.then(res => {
+			act_types = Object.keys(res);
+			var i;
+			for(i = 0 ; i < act_types.length; i++){
+				if(act_types[i] == ""){
+					act_types[i] = "NULL"
+				}
+			}
             //adding activity buttons as a dropdown list------------------------------
-			drawPieChart(colors, Object.values(res), Object.keys(res), "pie-chart");
+			drawPieChart(colors, Object.values(res), act_types , "pie-chart");
 			let dropdown = document.getElementById("act-list");
 			for (year of Object.keys(res)) {
 				let btn = document.createElement("button");
