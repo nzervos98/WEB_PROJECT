@@ -20,7 +20,7 @@
 	<link rel="stylesheet" type="text/css" href="css_test.css">
 	
 	<script src="map.js" defer></script>
-	<script src="data.js" defer></script>
+	<script src="delete_data.js" defer></script>
 
 
 
@@ -46,9 +46,11 @@
 			document.getElementById("mySidenav").style.width = "0";
 		  }
 		  </script>
-
-		<div id="map"></div> 
-
+		<div class="col-md-12">
+			<div id="map"></div> 
+		</div>
+		
+<div class="row-md-12">
 		<div class="controls d-flex felx-row flex-wrap justify-content-center m-1 text-white text-center">
 			<div class="align-items-center m-3" id="year-select">
 				<span>YEAR</span>
@@ -59,7 +61,7 @@
 
 						<div class="btn-group" role="group">
 							<button id="first-year" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								First Year
+								Starting Year
 							</button>
 
 							<div class="dropdown-menu" id="first-year-list" >
@@ -70,14 +72,14 @@
 
 						<div class="btn-group" role="group">
 							<button  id="last-year" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								Last Year
+								Ending Year
 							</button>
 							<div class="dropdown-menu until" id="last-year-list">
 							</div>
 						</div>
 
 					</div>
-					<button id="year-all" type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">ALL</button>	
+					<button id="year-all" type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">All Years</button>	
 
 
 				</div>
@@ -90,7 +92,7 @@
 
 						<div class="btn-group" role="group">
 							<button id="first-month" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								First Month
+								Starting Month
 							</button>
 
 							<div class="dropdown-menu" id="first-month-list" >
@@ -101,14 +103,14 @@
 
 						<div class="btn-group" role="group">
 							<button id="last-month" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								Last Month
+								Ending Month
 							</button>
 							<div class="dropdown-menu until" id="last-month-list">
 							</div>
 						</div>
 
 					</div>
-					<button id="month-all" type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">ALL</button>	
+					<button id="month-all" type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">All Months</button>	
 				</div>	
 			</div>	
 			<div class="align-items-center m-3" id="day-select">
@@ -118,7 +120,7 @@
 
 						<div class="btn-group" role="group">
 							<button id="first-day" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								First Day
+								Starting Day
 							</button>
 
 							<div class="dropdown-menu" id="first-day-list" >
@@ -129,14 +131,14 @@
 
 						<div class="btn-group" role="group">
 							<button id="last-day" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								Last Day
+								Ending Day
 							</button>
 							<div class="dropdown-menu until" id="last-day-list">
 							</div>
 						</div>
 
 					</div>
-					<button id="day-all"type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">ALL</button>	
+					<button id="day-all"type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">All Days</button>	
 				</div>	
 			</div>	
 			<div class="align-items-center m-3" id="hour-select">
@@ -146,7 +148,7 @@
 
 						<div class="btn-group" role="group">
 							<button id="first-hour" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								First Hour
+								Starting Hour
 							</button>
 
 							<div class="dropdown-menu" id="first-hour-list" >
@@ -157,7 +159,7 @@
 
 						<div class="btn-group" role="group">
 							<button id="last-hour" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-								Last Hour 
+								Ending Hour 
 							</button>
 
 							<div class="dropdown-menu until" id="last-hour-list">
@@ -165,15 +167,16 @@
 						</div>
 					</div>
 
-					<button id="hour-all"type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">ALL</button>	
+					<button id="hour-all"type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">All Hours</button>	
 				</div>
 			</div>
+			<div class="row-md-12">
 			
 			<div class="align-items-center m-3" id="activity-select">
 				<span>ACTIVITY</span>
 				<div class="dropdown">
 					<button id="activities" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-						Activities
+						Specify Activities
 					</button>
 
 					<div class="dropdown-menu" id="activities-list" >
@@ -181,18 +184,20 @@
 				</div>
 			</div>
 
-			<button  id="render-button" type="button" onclick="drawHeatMap(mymap)" class="btn btn-primary btn-large m-3">HEATMAP</button>
-		</div>	
+			<button  id="render-button" type="button" onclick="drawHeatMap(mymap)" class="btn btn-primary btn-large m-3">Show on Heatmap</button>
+		</div>
+	</div>	
 		<div class="controls d-flex felx-row flex-wrap justify-content-center m-1 text-white text-center">
 				<div class="flex flex-row" id="format-select">
 					<div class="btn-group " role="group">
-						<button type="button" class="btn btn-info" onclick="setDownSel(this)">JSON</button>	
-						<button type="button" class="btn btn-info" onclick="setDownSel(this)">XML</button>	
-						<button type="button" class="btn btn-info" onclick="setDownSel(this)">CSV</button>	
+						<button type="button" class="btn btn-info" onclick="setDownSel(this)">.JSON File</button>	
+						<button type="button" class="btn btn-info" onclick="setDownSel(this)">.XML File</button>	
+						<button type="button" class="btn btn-info" onclick="setDownSel(this)">.CSV File</button>	
 					</div>
-					<button  id="down-button" type="button" onclick="downloadFile()" class="btn btn-primary btn-large m-3">DOWNLOAD</button>
+					<button  id="down-button" type="button" onclick="downloadFile()" class="btn btn-primary btn-large m-3">Download Designated File</button>
 				</div>	
 
+		</div>
 		</div>
 	</body>
 </html>

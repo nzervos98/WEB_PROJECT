@@ -42,7 +42,7 @@ function drawPieChart(colors, data, labels, id) {
 		options: {
 			title: {
 				display: true,
-				text: "Activities distribution",
+				text: "Activity Distribution",
 				fontSize: 30
 			}
 		}
@@ -177,14 +177,14 @@ function drawLineChart(data, labels, id, text) {
 		pieLabels,
 		"activitiesPie"
 	);
-	drawBarChart(userData.count, userData.users, "usersBar", "User Distribution");
+	drawBarChart(userData.count, userData.users, "usersBar", "User Activity Distribution");
 	drawBarChart(
 		dayData,
 		["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"],
 		"dayBar",
-		"Day Distribution"
+		"Daily Activity Distribution"
 	);
-	drawBarChart(yearData.count, yearData.years, "yearBar", "Year Distribution");
+	drawBarChart(yearData.count, yearData.years, "yearBar", "Year Activity Distribution");
 	drawLineChart(
 		monthData,
 		[
@@ -202,7 +202,7 @@ function drawLineChart(data, labels, id, text) {
 			"DEC"
 		],
 		"monthLine",
-		"Month Distribution"
+		"Month Activity Distribution"
 	);
 	drawLineChart(
 		hourData,
@@ -233,6 +233,6 @@ function drawLineChart(data, labels, id, text) {
 			24
 		],
 		"hourLine",
-		"Hour Distribution"
+		"Hour Activity Distribution"
 	);
 })();

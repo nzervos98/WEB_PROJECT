@@ -45,7 +45,10 @@
                     <div id="map" class="border border-dark flex-row mr-5 pr-3"> </div>
 
                     <div class="controls d-flex felx-row flex-wrap justify-content-center m-1 text-white text-center"> 
+                    
+                        <div class="container">                   
                         <div class="align-items-center m-3" id="year-select"> 
+
                             <span>YEAR</span> 
                             <div class="column" id="year-select-list"> 
                                 <div class="btn-group " role="group"> 
@@ -94,7 +97,10 @@
                                 </div>                                 
                                 <button id="month-all" type="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">All Months</button>                                 
                             </div>                             
-                        </div>                         
+                        </div>    
+                    </div>      
+                    
+<div class="container">
                         <div class="align-items-center m-3" id="day-select"> 
                             <span>DAY</span> 
                             <div class="column" id="day-select-list"> 
@@ -141,6 +147,7 @@
                                 <button id="hour-all" ype="button" class="btn btn-primary" onclick="this.classList.toggle('btn-primary');this.classList.toggle('btn-warning')">All Hours</button>                                 
                             </div>                             
                         </div>
+                    </div>
                         <div class="align-items-center m-3" id="activity-select"> 
                              
                             <div class="column">
@@ -157,13 +164,13 @@
                 <div class="user-charts-container col col-lg-5 col-md-12"> 
                     <div class="d-flex flex-column"> 
                         <div class="user-chart"> 
-                            <canvas id="pie-chart" height"40ex"></canvas>                             
+                            <canvas id="pie-chart" height"30ex"></canvas>                             
                         </div>                         
                         <div class=" user-chart"> 
-                            <canvas id="day-bar" height"40ex"></canvas>                             
+                            <canvas id="day-bar" height"30ex"></canvas>                             
                         </div>                         
                         <div class=" user-chart"> 
-                            <canvas id="hour-line" height"40ex"></canvas>                             
+                            <canvas id="hour-line" height"30ex"></canvas>                             
                         </div>                         
                         <div class="align-self-center mt-2 btn-group" role="group"> 
                             <button id="act-sel" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> 
