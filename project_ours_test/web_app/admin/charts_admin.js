@@ -59,7 +59,7 @@ function drawBarChart(data, labels, id, text) {
 			datasets: [
 				{
 					data: data,
-					backgroundColor: "DeepPink"
+					backgroundColor: "LightBlue"
 				}
 			]
 		},
@@ -101,7 +101,7 @@ function drawLineChart(data, labels, id, text) {
 					label: "Continous " + text,
 					fill: false,
 					data: data,
-					borderColor: "DeepPink"
+					borderColor: "LightBlue"
 				}
 			]
 		},

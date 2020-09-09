@@ -46,7 +46,7 @@ if( strcmp($usrname , $row['username'])==0 && strcmp($pw , $row['password'])==0 
 		$_SESSION['id'] = $row['id'];
 
 		if(!$row['isAdmin']){
-			header('location:../web_app/user/dash.html');
+			header('location:../web_app/user/score.html');
 		}
 		else{
 			header('location:../web_app/admin/charts_admin.html');

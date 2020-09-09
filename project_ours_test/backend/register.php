@@ -36,7 +36,7 @@
 
 		$_SESSION['id'] = $userid;
 		
-		header('location:../web_app/user/dash.html');
+		header('location:../web_app/user/score.html');
 	}
 
 ?>
