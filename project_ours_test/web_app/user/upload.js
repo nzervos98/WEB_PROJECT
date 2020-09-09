@@ -40,6 +40,7 @@ function drawNoZone(event) {
 
 //-------------------------------------------------------------------------------------------------
 
+//set areas that should not be included
 function getRectangles() {
 	let recs = [];
 	lGroup.eachLayer(rect => {
@@ -100,7 +101,7 @@ function readUploadedFile(input) {
 	return new Promise((resolve, reject) => {
 		fileReader.onerror = () => {
 			fileReader.abort();
-			reject(alert("Problem parsing File"));
+			reject(alert("Problem occured while parsing uploaded file."));
 		};
 
 		fileReader.onload = () => {

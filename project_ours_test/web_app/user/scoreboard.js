@@ -15,7 +15,7 @@ fetch("http://localhost:80/project_ours_test/backend/score.php", {
 		document.getElementById("last-up").textContent = lastUp;
 		document.getElementById("first-dt").textContent = firstDt.slice(0, 10);
 		document.getElementById("last-dt").textContent = lastDt.slice(0, 10);
-		document.getElementById("score").textContent = username + " scored : " + userScore;
+		document.getElementById("score").textContent = "User " + username + " has an ecological score of : " + userScore + ".";
 
 		console.log(top3);
 		labels = Object.keys(top3);
@@ -33,7 +33,7 @@ fetch("http://localhost:80/project_ours_test/backend/score.php", {
 				datasets: [
 					{
 						data: data,
-						backgroundColor: "DeepPink"
+						backgroundColor: "LightBlue"
 					}
 				]
 			},
@@ -41,7 +41,7 @@ fetch("http://localhost:80/project_ours_test/backend/score.php", {
 				legend: {
                     labels: {
                         // This more specific font property overrides the global property
-                        fontColor: 'black'
+                        fontColor: 'Purple'
                     } ,
 					display: false
 				},
@@ -54,13 +54,13 @@ fetch("http://localhost:80/project_ours_test/backend/score.php", {
 				scales: {
 					xAxes: [
 						{
-                            ticks: { fontColor: "black"},
+                            ticks: { fontColor: "white"},
 							gridLines: { display: false }
 						}
 					],
 					yAxes: [
 						{
-							ticks: { fontColor: "black", beginAtZero: true },
+							ticks: { fontColor: "white", beginAtZero: true },
                             gridLines: { display: false },
                             
 						}
