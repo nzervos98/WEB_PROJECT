@@ -149,8 +149,11 @@ function drawLineChart(data, labels, id, text) {
 
 	console.log(data);
 
-	let activityData = data.Activity_Records; //
+	let activityData = data.Activity_Records; 
 	let pieLabels = Object.keys(activityData);
+	pieLabels[0] = "NULL";
+	console.log(pieLabels);
+	
 	let pieData = Object.values(activityData);
 	let userData = {
 		users: Object.keys(data.User_Records),
