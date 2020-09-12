@@ -30,7 +30,7 @@ $nums = array();
 $scores = array();
 
 
-$sql = "select id,username from users";
+$sql = "select id,username from users where isAdmin = 0 ";
 $res = mysqli_query($conn, $sql) or die(json_encode(array("status"=>"fail","msg"=>mysqli_error($conn))));
 
 $users=array();
@@ -106,7 +106,7 @@ foreach($nums as $key => $num){
 	//calculating the score for each user 
 	$body_acts = $bicycle_act + $on_foot_act + $running_act + $walking_act;
 	$scr = $body_acts / ( $body_acts + $in_vehicle_act + 1);
-	$scores[$key]= $scr*100;
+	$scores[$key]= round($scr*100);
 }
 //var_dump($scores);
 
