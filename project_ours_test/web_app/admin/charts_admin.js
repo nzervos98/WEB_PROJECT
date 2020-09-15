@@ -151,7 +151,13 @@ function drawLineChart(data, labels, id, text) {
 
 	let activityData = data.Activity_Records; 
 	let pieLabels = Object.keys(activityData);
-	pieLabels[0] = "NULL";
+	
+	for (var i = 0; i < pieLabels.length; i++){
+		if(pieLabels[i] == ""){
+			pieLabels[i] = "NULL";
+		}
+	}
+	
 	console.log(pieLabels);
 	
 	let pieData = Object.values(activityData);
