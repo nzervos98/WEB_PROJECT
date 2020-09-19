@@ -1,0 +1,71 @@
+[
+    {
+        "name": "salsify/json-streaming-parser",
+        "version": "v8.2.0",
+        "version_normalized": "8.2.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/salsify/jsonstreamingparser.git",
+            "reference": "4ae5394136a037e09402ba8b48dbf4e20475e69d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/salsify/jsonstreamingparser/zipball/4ae5394136a037e09402ba8b48dbf4e20475e69d",
+            "reference": "4ae5394136a037e09402ba8b48dbf4e20475e69d",
+            "shasum": ""
+        },
+        "require": {
+            "ext-ctype": "*",
+            "ext-mbstring": "*",
+            "php": ">=7.1"
+        },
+        "require-dev": {
+            "ext-json": "*"
+        },
+        "time": "2020-05-22T20:10:04+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "8.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "JsonStreamingParser\\": "src",
+                "JsonStreamingParser\\Test\\": "tests"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Rob Gonzalez",
+                "email": "rob@salsify.com",
+                "homepage": "http://salsify.com/"
+            },
+            {
+                "name": "Maxim Gnatenko",
+                "email": "mgnatenko@gmail.com"
+            },
+            {
+                "name": "Max Grigorian",
+                "email": "maxakawizard@gmail.com",
+                "homepage": "http://wizardcat.com/"
+            },
+            {
+                "name": "ThePanz",
+                "email": "thepanz@gmail.com"
+            }
+        ],
+        "description": "A streaming parser for JSON in PHP.",
+        "homepage": "https://github.com/salsify/jsonstreamingparser",
+        "keywords": [
+            "json",
+            "parser",
+            "streaming"
+        ]
+    }
+]

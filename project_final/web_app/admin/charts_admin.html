@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <!-- meta tags -->
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script src="https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/heatmap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-heatmap@1.0.0/leaflet-heatmap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="css_test.css">
+	
+	<script src="charts_admin.js" defer></script>
+	<script src="delete_data.js" defer></script>
+
+
+
+	</head>
+	<body>
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="#">Admin Charts</a>
+			<a href="./map.html">Heatmap Display</a>
+			<a href="#" id="delete-data">Delete Data</a>
+			<a href="../../backend/logout.php"><span style="color: red;">Log Out</a>
+		  </div>
+		  
+		  <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; Menu</span>
+		  
+		  <script>
+		  function openNav() {
+			document.getElementById("mySidenav").style.width = "250px";
+		  }
+		  
+		  function closeNav() {
+			document.getElementById("mySidenav").style.width = "0";
+		  }
+		  </script>
+		
+		
+		<div id="charts-container" class="container-fluid">
+			<div class="row justify-content-center">
+				<div class="chart-container col-md-10">
+					<canvas id="activitiesPie" width="800" height="300"></canvas>
+				</div>
+				<div class="chart-container col-md-10 col-xl-6">
+					<canvas id="usersBar" width="800" height="250"></canvas>
+				</div>
+				<div class="chart-container col-md-10 col-xl-6">
+					<canvas id="monthLine" width="800" height="250"></canvas>
+				</div>
+				<div class="chart-container col-md-10 col-xl-6">
+					<canvas id="dayBar" width="800" height="250"></canvas>
+				</div>	       
+				<div class="chart-container col-md-10 col-xl-6">
+					<canvas id="hourLine" width="800" height="250"></canvas>
+				</div>	
+				<div class="chart-container col-md-10 col-xl-6">
+					<canvas id="yearBar" width="800" height="250"></canvas>
+				</div>	
+			</div>
+		</div>
+
+
+	</body>
+</html>
