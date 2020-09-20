@@ -1,25 +1,5 @@
 <?php
 
-
-//session_start();
-
-    /*
-	$target_dir = "uploads/";
-	$target_file = $target_dir . basename($_FILES["importfile"]["name"]);
-	
-	//Unique ID of current user
-	$userid = $_SESSION['id'];
-	
-	
-	if (move_uploaded_file($_FILES["importfile"]["tmp_name"], $target_file)){
-		echo "The file ". basename( $_FILES["importfile"]["name"]). " has been uploaded.<br>";
-	}
-	*/
-
-	
-
-
-
 $file_as_a_json_string = file_get_contents('php://input');
 $current_path = getcwd();
 //mkdir($current_path."/uploads");

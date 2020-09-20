@@ -1,12 +1,6 @@
 <?php
 session_start();
-/*
-$json = file_get_contents('php://input');
-$res = new \stdClass();
-$res->type = "dayT";
-$json = strval($res);
-$map = json_decode($json,true);
-*/
+
 $json = file_get_contents('php://input');
 $map = json_decode($json,true);
 
@@ -18,12 +12,6 @@ if (mysqli_connect_error())
 }
 
 $id=$_SESSION["id"];
-//$id = "Vb0AJlMotskwWj0ZGY1odj8LsAXhqY9gaKhMD5FlYJE=";
-
-/*
-mysqli_query($conn,'SET CHARACTER SET utf8;');
-mysqli_query($conn,'SET COLLATION_CONNECTION=utf8_general_ci;');
-*/
 
 $sql_arr = "SELECT DISTINCT `activity_type` FROM `locationData`; ";
 $result = mysqli_query($conn,$sql_arr) or die(json_encode(array("status"=>"failure","msg"=>mysqli_error($conn))));

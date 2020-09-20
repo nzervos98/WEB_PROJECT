@@ -7,11 +7,6 @@ if (mysqli_connect_error())
     die(json_encode(array("status"=>"failure","mg"=> mysqli_connect_error())));
 }
 
-/*
-mysqli_query($conn,'SET CHARACTER SET utf8;');
-mysqli_query($conn,'SET COLLATION_CONNECTION=utf8_general_ci;');
-*/
-
 $acts = array();	
 $sql= "select distinct activity_type as act from locationData";
 			

@@ -10,11 +10,6 @@ if (mysqli_connect_error())
 
 $id = $_SESSION["id"];
 
-/*
-mysqli_query($conn,'SET CHARACTER SET utf8;');
-mysqli_query($conn,'SET COLLATION_CONNECTION=utf8_general_ci;');
-*/
-
 $sql = "select lastUpload from users where id = '$id'";
 
 $res = mysqli_query($conn, $sql) or die(json_encode(array("status"=>"fail","msg"=>mysqli_error($conn))));

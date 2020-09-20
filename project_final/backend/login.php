@@ -21,24 +21,6 @@ $result = mysqli_query($con, $s);
 $num = mysqli_num_rows($result);
 $row = mysqli_fetch_array($result);
 
-/*
-if( strcmp($usrname , $row['username'])==0 && strcmp($pw , $row['password'])==0 ){
-var_dump($row);
-var_dump($pw);
-}
-*/
-
-/*
-if($num == 1 && $row['isadmin'] == 1){
-	$_SESSION['username'] = $row['username'];
-	$_SESSION['id'] = $row['id'];
-	header('location:home.php');
-}else if($num == 1 && $row['isadmin'] == 0){
-	echo "Peasant";
-}else{
-	header('location:start.php');
-}
-*/
 
 if( strcmp($usrname , $row['username'])==0 && strcmp($pw , $row['password'])==0 )
 	{

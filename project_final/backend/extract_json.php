@@ -13,10 +13,6 @@ if (mysqli_connect_error())
     die(json_encode(array("status"=>"failure","mg"=> mysqli_connect_error())));
 }
 
-/*
-mysqli_query($conn,'SET CHARACTER SET utf8;');
-mysqli_query($conn,'SET COLLATION_CONNECTION=utf8_general_ci;');
-*/
 
 $yearAll = $map['yearAll'];
 $monthAll = $map['monthAll'];
@@ -86,18 +82,12 @@ if ($hourAll == true){
 	$hourEnd =intval($row['maxhour']);
 }
 
-$sql= "select a.userId, a.locationID , a.activity_type, a.activity_confidence , a.activity_timestampMs ,a.accuracy ,a.longitudeE7 ,a.latitudeE7 ,a.timestampMs 
+$sql= "select a.userId, a.locationID , a.heading , a.activity_type, a.activity_confidence , a.activity_timestampMs , a.verticalAccuracy , a.velocity , a.accuracy ,a.longitudeE7 ,a.latitudeE7 , a.altitude ,a.timestampMs
 		from (select * from locationData inner join timestampMs on locationData.locationID = timestampMs.locationData) as a WHERE ( a.yearT BETWEEN $yearStart AND $yearEnd) AND (a.monthT BETWEEN $monthStart AND $monthEnd) AND (a.dayT BETWEEN $dayStart AND $dayEnd) AND (a.hourT BETWEEN $hourStart AND $hourEnd) "; 
 
 $sql .= $extra_sql;
 
-/*		
-if(!empty($actList)){
-	$sql .= $extra_sql;
-}
-*/
 
-//$sql = "select * from locationData";
 //get records from database
 
 $query = $conn->query($sql);
@@ -106,19 +96,19 @@ try{
 while($row=mysqli_fetch_assoc($query)) { 
 	$userId=$row['userId']; 
 	$locationID=$row['locationID']; 
-	//$heading=$row['heading']; 
+	$heading=$row['heading']; 
 	$activity_type=$row['activity_type']; 
 	$activity_confidence=$row['activity_confidence']; 
 	$activity_timestampMs=$row['activity_timestampMs']; 
-	//$verticalAccuracy=$row['verticalAccuracy']; 
-	//$velocity=$row['velocity']; 
+	$verticalAccuracy=$row['verticalAccuracy']; 
+	$velocity=$row['velocity']; 
 	$accuracy=$row['accuracy']; 
 	$longitudeE7=$row['longitudeE7']; 
 	$latitudeE7=$row['latitudeE7']; 
-	//$altitude=$row['altitude']; 
+	$altitude=$row['altitude']; 
 	$timestampMs=$row['timestampMs']; 
 
- $outputData[] = array('userId'=> $userId, 'locationID'=> $locationID , 'activity_type'=> $activity_type, 'activity_confidence'=> $activity_confidence, 'activity_timestampMs'=> $activity_timestampMs , 'accuracy'=> $accuracy, 'longitudeE7'=> $longitudeE7, 'latitudeE7'=> $latitudeE7 , 'timestampMs'=> $timestampMs);
+ $outputData[] = array('userId'=> $userId, 'locationID'=> $locationID , 'heading'=> $heading , 'activity_type'=> $activity_type, 'activity_confidence'=> $activity_confidence, 'activity_timestampMs'=> $activity_timestampMs , 'verticalAccuracy'=> $verticalAccuracy , 'velocity'=>$velocity , 'accuracy'=> $accuracy, 'longitudeE7'=> $longitudeE7, 'latitudeE7'=> $latitudeE7 , 'altitude'=> $altitude , 'timestampMs'=> $timestampMs);
 } 
 
 $response['outputData'] = $outputData;

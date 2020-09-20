@@ -16,12 +16,16 @@ VALUES ("admin","admin","admin","admin@nnanos.com",1);
 CREATE TABLE locationData (
 userId varchar(128) NOT NULL,
 locationID varchar(36) PRIMARY KEY,
+heading varchar(24),
 activity_type varchar(30),
 activity_confidence int,
 activity_timestampMs varchar(128),
+verticalAccuracy varchar(24),
+velocity varchar(24),
 accuracy int,
 longitudeE7 bigint unsigned,
 latitudeE7 bigint unsigned, 
+altitude varchar(24),
 timestampMs bigint unsigned,
 CONSTRAINT conLoc FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
 )engine=InnoDB;
@@ -56,21 +60,6 @@ END; |
 DELIMITER ;
 
 DELIMITER //
-
-/*
-CREATE PROCEDURE deleteData()
-BEGIN
-	
-	SET FOREIGN_KEY_CHECKS = 0; 
-    SET SQL_SAFE_UPDATES = 0;
-	TRUNCATE TABLE timestampMs;
-	TRUNCATE TABLE locationData;
-	DELETE FROM users WHERE isAdmin = false;
-	SET FOREIGN_KEY_CHECKS = 1;
-    SET SQL_SAFE_UPDATES = 1;
-END //
-DELIMITER ;
-*/
 
 CREATE PROCEDURE deleteData()
 BEGIN

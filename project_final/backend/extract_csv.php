@@ -13,10 +13,7 @@ if (mysqli_connect_error())
     die(json_encode(array("status"=>"failure","mg"=> mysqli_connect_error())));
 }
 
-/*
-mysqli_query($conn,'SET CHARACTER SET utf8;');
-mysqli_query($conn,'SET COLLATION_CONNECTION=utf8_general_ci;');
-*/
+
 
 $yearAll = $map['yearAll'];
 $monthAll = $map['monthAll'];
@@ -86,7 +83,7 @@ if ($hourAll == true){
 	$hourEnd =intval($row['maxhour']);
 }
 
-$sql= "select a.userId, a.locationID , a.activity_type, a.activity_confidence , a.activity_timestampMs ,a.accuracy ,a.longitudeE7 ,a.latitudeE7 ,a.timestampMs 
+$sql= "select a.userId, a.locationID , a.heading , a.activity_type, a.activity_confidence , a.activity_timestampMs , a.verticalAccuracy , a.velocity , a.accuracy ,a.longitudeE7 ,a.latitudeE7 , a.altitude ,a.timestampMs 
 		from (select * from locationData inner join timestampMs on locationData.locationID = timestampMs.locationData) as a WHERE ( a.yearT BETWEEN $yearStart AND $yearEnd) AND (a.monthT BETWEEN $monthStart AND $monthEnd) AND (a.dayT BETWEEN $dayStart AND $dayEnd) AND (a.hourT BETWEEN $hourStart AND $hourEnd) "; 
 
 $sql .= $extra_sql;
@@ -113,12 +110,12 @@ if($query->num_rows > 0){
     $f = fopen('php://memory', 'w');
     
     //set column headers
-    $fields = array('userId', 'locationID' ,'activity_type', 'activity_confidence', 'activity_timestampMs' ,'accuracy','longitudeE7','latitudeE7' ,'timestampMs');
+    $fields = array('userId', 'locationID' , 'heading' ,'activity_type', 'activity_confidence', 'activity_timestampMs' , 'verticalAccuracy' , 'velocity' ,'accuracy','longitudeE7','latitudeE7' , 'altitude' ,'timestampMs');
     fputcsv($f, $fields, $delimiter);
     
     //output each row of the data, format line as csv and write to file pointer
     while($row = $query->fetch_assoc()){
-        $lineData = array_map("replace_with_null", array($row['userId'], $row['locationID'] , $row['activity_type'], $row['activity_confidence'], $row['activity_timestampMs'],  $row['accuracy'], $row['longitudeE7'], $row['latitudeE7'] , $row['timestampMs']));
+        $lineData = array_map("replace_with_null", array($row['userId'], $row['locationID'] , $row['heading'] , $row['activity_type'], $row['activity_confidence'], $row['activity_timestampMs'], $row['verticalAccuracy'] , $row['velocity'] , $row['accuracy'], $row['longitudeE7'], $row['latitudeE7'] , $row['altitude'] , $row['timestampMs']));
         fputcsv($f, $lineData, $delimiter);
     }
     

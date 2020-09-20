@@ -13,10 +13,6 @@ if (mysqli_connect_error())
     die(json_encode(array("status"=>"failure","mg"=> mysqli_connect_error())));
 }
 
-/*
-mysqli_query($conn,'SET CHARACTER SET utf8;');
-mysqli_query($conn,'SET COLLATION_CONNECTION=utf8_general_ci;');
-*/
 
 $yearAll = $map['yearAll'];
 $monthAll = $map['monthAll'];
@@ -86,7 +82,7 @@ if ($hourAll == true){
 	$hourEnd =intval($row['maxhour']);
 }
 
-$sql= "select a.userId, a.locationID , a.activity_type, a.activity_confidence , a.activity_timestampMs ,a.accuracy ,a.longitudeE7 ,a.latitudeE7 ,a.timestampMs 
+$sql= "select a.userId, a.locationID , a.heading , a.activity_type, a.activity_confidence , a.activity_timestampMs , a.verticalAccuracy , a.velocity , a.accuracy ,a.longitudeE7 ,a.latitudeE7 , a.altitude ,a.timestampMs
 		from (select * from locationData inner join timestampMs on locationData.locationID = timestampMs.locationData) as a WHERE ( a.yearT BETWEEN $yearStart AND $yearEnd) AND (a.monthT BETWEEN $monthStart AND $monthEnd) AND (a.dayT BETWEEN $dayStart AND $dayEnd) AND (a.hourT BETWEEN $hourStart AND $hourEnd) "; 
 
 $sql .= $extra_sql;
@@ -129,16 +125,16 @@ function createXMLfile($locationDataArray){
      
 	$userId      			=  $locationDataArray[$i]['userId']; 
 	$locationID				=  $locationDataArray[$i]['locationID']; 
-	//$heading       			=  $locationDataArray[$i]['heading']; 
+	$heading       			=  $locationDataArray[$i]['heading']; 
 	$activity_type 			=  htmlspecialchars($locationDataArray[$i]['activity_type']);
 	$activity_confidence	=  $locationDataArray[$i]['activity_confidence']; 
 	$activity_timestampMs  	=  $locationDataArray[$i]['activity_timestampMs']; 
-	//$verticalAccuracy     	=  $locationDataArray[$i]['verticalAccuracy']; 
-	//$velocity  				=  $locationDataArray[$i]['velocity'];  
+	$verticalAccuracy     	=  $locationDataArray[$i]['verticalAccuracy']; 
+	$velocity  				=  $locationDataArray[$i]['velocity'];  
 	$accuracy    		  	=  $locationDataArray[$i]['accuracy']; 
 	$longitudeE7  			=  $locationDataArray[$i]['longitudeE7'];  
 	$latitudeE7  			=  $locationDataArray[$i]['latitudeE7'];  
-	//$altitude  				=  $locationDataArray[$i]['altitude'];   
+	$altitude  				=  $locationDataArray[$i]['altitude'];   
 	$timestampMs 		 	=  $locationDataArray[$i]['timestampMs'];   
 	 
 	 
@@ -151,8 +147,8 @@ function createXMLfile($locationDataArray){
 	$locID     = $dom->createElement('locationID', $locationID); 
 	$output->appendChild($locID); 
 	
-	//$head   = $dom->createElement('heading', $heading); 
-	//$output->appendChild($head); 
+	$head   = $dom->createElement('heading', $heading); 
+	$output->appendChild($head); 
 	
 	$act_type    = $dom->createElement('activity_type', $activity_type); 
 	$output->appendChild($act_type); 
@@ -161,16 +157,14 @@ function createXMLfile($locationDataArray){
 	$output->appendChild($act_conf); 
      
 	$act_timestamp = $dom->createElement('activity_timestampMs', $activity_timestampMs); 
-	$output->appendChild($act_timestamp);
+	$output->appendChild($act_timestamp);	
 	
-	/*
 	$ver_acc = $dom->createElement('verticalAccuracy', $verticalAccuracy); 
 	$output->appendChild($ver_acc);
 	
 	$vel = $dom->createElement('velocity', $velocity); 
 	$output->appendChild($vel);
-	*/
-
+	
 	$acc = $dom->createElement('accuracy', $accuracy); 
 	$output->appendChild($acc);
 	
@@ -180,8 +174,8 @@ function createXMLfile($locationDataArray){
 	$lat = $dom->createElement('latitudeE7', $latitudeE7); 
 	$output->appendChild($lat);
 	
-	//$alt = $dom->createElement('altitude', $altitude); 
-	//$output->appendChild($alt);
+	$alt = $dom->createElement('altitude', $altitude); 
+	$output->appendChild($alt);
 	
 	$timeMs = $dom->createElement('timestampMs', $timestampMs); 
 	$output->appendChild($timeMs);
